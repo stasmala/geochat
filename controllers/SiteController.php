@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\RegisterForm;
 
 class SiteController extends Controller
 {
@@ -62,14 +63,26 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $model = new ContactForm();
+        // https://www.yiiframework.com/doc/guide/2.0/en/input-forms
+        
+        $model = new RegisterForm();
         if ($model->load(Yii::$app->request->post()) && $model->register(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('registerFormSubmitted');
 
             return $this->refresh();
         }
+
+        // достаем данные из куков пользователя
+        $cookiesData = Yii::$app->request->cookies;
+
+        // получение логина из куков
+        $login = $cookiesData->has('login') ? $cookiesData->get('login') : "";
+        
         return $this->render('index', [
             'model' => $model,
+            'udata' => [
+                'login' => $login,
+            ],
         ]);
 
 

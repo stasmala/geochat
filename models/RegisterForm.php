@@ -10,11 +10,11 @@ use yii\base\Model;
  */
 class RegisterForm extends Model
 {
-    public $name;
-    public $email;
-    public $subject;
-    public $body;
-    public $verifyCode;
+    public $login;
+    public $subjects;
+    public $city;
+    public $time;
+    //public $verifyCode;
 
 
     /**
@@ -24,11 +24,12 @@ class RegisterForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
+            [['login', 'subjects', 'city', 'time'], 'required', 'message' => 'eror'],
+            //['message'=>'Please enter a value for {attribute}.']
             // email has to be a valid email address
-            ['email', 'email'],
+            //['email', 'email'],
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            //['verifyCode', 'captcha'],
         ];
     }
 
@@ -38,7 +39,13 @@ class RegisterForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            //'verifyCode' => 'Verification Code',
+
+            'login' => 'Логин',
+            'subjects' => 'Тематика разговора',
+            'city' => "Город",
+            'time' => "Часовой пояс",
+
         ];
     }
 
