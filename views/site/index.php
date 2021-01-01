@@ -68,12 +68,79 @@ $this->title = 'Входите';
                                 <?= $form->field($model, 'login')->textInput([
                                     'autofocus' => true,
                                     'value' => $udata['login']
-                                ]); ?>
+                                ]); 
+                                // activeCheckboxList
+                                ?>
+                                <div class="subjects-block">
+                                    <h4>Тематика разговора(subjects)</h4>
 
-                                <?= $form->field($model, 'subjects')->hint('Пожалуйста, введите имя'); ?>
+                                    <?php
+                                        $subjects = [
+                                            [
+                                                'id' => 1,
+                                                'title' => 'Default',
+                                                'class' => 'label-default',
+                                            ],
 
-                                <?= $form->field($model, 'city') ?>
-                                <?= $form->field($model, 'time') ?>
+                                            [
+                                                'id' => 1,
+                                                'title' => 'Primary',
+                                                'class' => 'label-primary',
+                                            ],
+
+                                            [
+                                                'id' => 1,
+                                                'title' => 'Success',
+                                                'class' => 'label-success',
+                                            ],
+
+                                            [
+                                                'id' => 1,
+                                                'title' => 'Info',
+                                                'class' => 'label-info',
+                                            ],
+
+                                            [
+                                                'id' => 1,
+                                                'title' => 'Warning',
+                                                'class' => 'label-warning',
+                                            ],
+
+                                            [
+                                                'id' => 1,
+                                                'title' => 'Danger',
+                                                'class' => 'label-danger',
+                                            ],
+                                        ];
+                                    ?>
+
+                                    <div class="alert alert-danger" role="alert">...</div>
+                                    
+                                    <?php foreach($subjects as $s):?>
+                                        <label>
+                                            <span class="label <?php echo $s['class']; ?>">
+                                                <?php echo $s['title']; ?>
+                                            </span>
+                                            <input name="subjects" type="radio" value="<?php echo $s['id']; ?>">
+                                        </label>
+                                    <?php endforeach; ?>
+                                    
+                                    <!--
+                                    <span class="label label-primary">Primary</span>
+                                    <span class="label label-success">Success</span>
+                                    <span class="label label-info">Info</span>
+                                    <span class="label label-warning">Warning</span>
+                                    <span class="label label-danger">Danger</span>
+                                    -->
+                                </div>
+
+                                
+
+                                <?= $form->field($model, 'city')->textInput([
+                                    'autofocus' => true,
+                                    'value' => $udata['city']
+                                ]);  ?>
+                                <?php /*= $form->field($model, 'time')*/ ?>
                                 
 
                 

@@ -48,11 +48,17 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
+            /*'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            */
         ];
+    }
+
+
+    private function getCity() {
+       return 'Dnepr'; 
     }
 
     /**
@@ -77,11 +83,13 @@ class SiteController extends Controller
 
         // получение логина из куков
         $login = $cookiesData->has('login') ? $cookiesData->get('login') : "";
+        $city = $cookiesData->has('login') ? $cookiesData->get('login') : $this->getCity();
         
         return $this->render('index', [
             'model' => $model,
             'udata' => [
                 'login' => $login,
+                'city' => $city,
             ],
         ]);
 

@@ -24,7 +24,7 @@ class RegisterForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['login', 'subjects', 'city', 'time'], 'required', 'message' => 'eror'],
+            [['login', 'subjects', 'city', 'time'], 'required', 'message' => 'Логин введите обязательно'],
             //['message'=>'Please enter a value for {attribute}.']
             // email has to be a valid email address
             //['email', 'email'],
